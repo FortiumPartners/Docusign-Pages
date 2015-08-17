@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+        <script src="//cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js"></script>
+    </head>
+    <body>
+
+    <form id="ndaform" name="ndaform" method="post" action="">
+
+
+        <table>
+            <tr>
+            <td width="160px">
+                <label>AMP Name</label>
+            </td>
+            <td>
+                <input type="text" name="AMP_UserName" id="AMP_UserName" required />
+            </td>
+            </tr>
+
+            <tr>
+            <td width="160px">
+                    <label>AMP E-Mail</label>
+             </td>
+             <td>
+                    <input type="email" name="AMP_Email" id="AMP_Email" required email />
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <br>
+            </td>
+            </tr>
+
+            <tr>
+                <td width="160px">
+                    <label>Candidate Name</label>
+                </td>
+                <td>
+                    <input type="text" name="Candidate_UserName" id="Candidate_UserName" required />
+                </td>
+            </tr>
+
+            <tr>
+                <td width="160px">
+                    <label>Candidate E-Mail</label>
+                </td>
+                <td>
+                    <input type="email" name="Candidate_Email" id="Candidate_Email" required email />
+                </td>
+            </tr>
+
+            <tr>
+                <td width="160px">
+                    <label>Candidate ID</label>
+                </td>
+                <td>
+                    <input type="text" name="EnvelopeField_Candidate" id="Candidate" required />
+                </td>
+            </tr>
+
+        </table>
+
+        <br>
+        <p>
+            <input type="submit" name="button" id="button" value="Submit" />
+        </p>
+
+    </form>
+
+    </body>
+    <script>
+        $(document).ready(function(){
+            $("#ndaform").submit(function(){
+
+                $("#ndaform").validate();
+
+                var querystring = $(this).serialize();
+                var url = 'https://na2.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=79348f45-9c23-4797-9e87-88e9ca64f02a&'+querystring;
+                this.action = url;
+
+                return true;
+            });
+        });
+    </script>
+
+
+</html>
